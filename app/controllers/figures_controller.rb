@@ -21,4 +21,8 @@ class FiguresController < ApplicationController
   @figure.titles << Title.create(name: params["title"]["name"]) if !params["title"]["name"].empty?
   @figure.save
   end
+
+  get '/figures' do
+    erb :'figures/show'
+  end
 end
