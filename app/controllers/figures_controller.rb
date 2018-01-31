@@ -20,9 +20,20 @@ class FiguresController < ApplicationController
       @figure.landmarks << Landmark.create(name: params["landmark"]["name"]) if !params["landmark"]["name"].empty?
   @figure.titles << Title.create(name: params["title"]["name"]) if !params["title"]["name"].empty?
   @figure.save
+  erb :'figures/index'
   end
 
   get '/figures' do
+    erb :'figures/index'
+  end
+
+  get '/figures/:id' do
+    @figure = Figure.find(params[:id])
     erb :'figures/show'
+  end
+
+  get 'figures/:id/edit' do
+    @figure = Figure.find(params[:id])
+    erb :'figures/edit'
   end
 end
