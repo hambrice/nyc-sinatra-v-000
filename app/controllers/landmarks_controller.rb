@@ -26,7 +26,7 @@ class LandmarksController < ApplicationController
   end
 
   patch '/landmarks/:id' do
-    binding.pry
+    #binding.pry
     @landmark = Landmark.find(params[:id])
     @landmark.update(name: params["landmark"]["name"], year_completed: params["landmark"]["year_completed"].to_s)
     redirect "/landmarks/#{@landmark.id}"
