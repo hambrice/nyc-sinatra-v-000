@@ -38,7 +38,8 @@ class FiguresController < ApplicationController
   end
 
   patch '/figures/:id' do
-    @figure = Figure.update(name: params["figure"]["name"])
+    @figure = Figure.find(params[:id])
+     @figure.update(name: params["figure"]["name"])
 
     if params["figure"]["title_ids"] != nil
       params["figure"]["title_ids"].each do |title|
@@ -53,6 +54,6 @@ class FiguresController < ApplicationController
       @figure.landmarks << Landmark.create(name: params["landmark"]["name"]) if !params["landmark"]["name"].empty?
   @figure.titles << Title.create(name: params["title"]["name"]) if !params["title"]["name"].empty?
   @figure.save
-  redirect "figures/#{@figure.id}"
+  redirect "/figures/#{@figure.id}"
 end
 end
