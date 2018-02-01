@@ -2,7 +2,7 @@
 <p><%=@landmark.year_completed%></p>
 
 <form method="POST" action="/landmarks/<%=@landmark.id%>">
-<input type="text" id="landmark_name" name="landmark[name]" id="name">
+<input type="text" id="name" name="landmark[name]" id="name">
 <input type="text" id="landmark_year_completed" name="landmark[year_completed]">
 <%Figure.all.each do |figure|%>
 <input type="radio" id="figure_<%=figure.id%>" name="landmark[figure]" value="<%=figure.id%>"><%=figure.name%></input>
